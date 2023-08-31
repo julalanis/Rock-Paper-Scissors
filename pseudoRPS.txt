@@ -1,0 +1,24 @@
+0. Begin a round
+1. prompt asks for input of rock, scissors or paper
+	2. stores user input as a variable
+3. computer makes a random selection
+	4. stores computer input as a variable
+5. user selection and computer selection is taken into account
+
+6. if user select= rock and computer select =paper then computer wins
+6. if user select= scissors and computer select =paper then user wins
+6. if user select= paper and computer select =paper then it's a draw
+
+6. if user select= rock and computer select =rock then it's a draw
+6. if user select= scissors and computer select =rock then computer wins
+6. if user select= paper and computer select =rock then user wins
+
+6. if user select= rock and computer select =scissors then user wins
+6. if user select= scissors and computer select =scissors then it's a draw
+6. if user select= paper and computer select =scissors then computer wins
+
+7. let one round add to the count of 5 total rounds.
+
+8. calculate who has most wins out of 5 rounds
+
+9. text prompt (winner) wins the game!
