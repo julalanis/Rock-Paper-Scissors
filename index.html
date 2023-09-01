@@ -8,10 +8,14 @@
 <body>
     <h2>Rock, Paper, Scissors</h2>
     <p>Can you best the computer 3 out of 5 rounds? Let's see!</p>
-    <label for="guessField">What will you throw?  </label>
-    <input type="text" id="guessField" class="guessField">
-    <input type="submit" value="Shoot!" class="guessSubmit">
-    <script>
+    <input id="userInput" type="text" placeholder="Make your choice">
+    <button onclick="returnText()">Submit</button>
+<script>
+    
+      function returnText() {
+        let input = document.getElementById("userInput").value;
+        return input;
+      }
 
         function computerPicks() {
             let computerChoices = ["rock", "paper", "scissors"];
@@ -24,16 +28,22 @@
  } if (randomizeChoice === 3) {
    return "scissors";
  }
- console.log(randomizeChoice);
+ return randomizeChoice;
 }
 
+function versus() {
+  if (returnText === randomizeChoice) {
+    prompt("It was a draw.");
+  } else if (input === "rock" && randomizeChoice === "scissors") {
+    prompt("Rock beats scissors! You win!");
+  } else if (input === "rock" && randomizeChoice === "paper") {
+    prompt("Paper beats rock. You lose...")
+  }
+}
+returnText();
 computerPicks();
+versus();
 
-        
-        //function checkHand {
-           // const userHand = String(guessField.value);
-        //}
-
-    </script>
+</script>
 </body>
 </html>
