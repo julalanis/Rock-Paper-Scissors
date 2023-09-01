@@ -9,14 +9,21 @@
     <h2>Rock, Paper, Scissors</h2>
     <p>Can you best the computer 3 out of 5 rounds? Let's see!</p>
     <input id="userInput" type="text" placeholder="Make your choice">
-    <button onclick="returnText()">Submit</button>
+    <button onclick="playerChoice()">Submit</button>
 <script>
-    
-      function returnText() {
-        let input = document.getElementById("userInput").value;
-        return input;
-      }
+      
+//main priority it to get the user input working. Need it to only accept rock/paper/scissors elsewise reprompt.
+function playerChoice() {
+  let playerChoice = document.getElementById("userInput").value;
+  if (playerChoice == "rock" || "paper" || "scissors"){
+    alert("Nice!");
+  } else {  //this doesnt seem to be activating no matter what input. 
+    alert("Invalid move");
+  }
+  return playerChoice;
+}
 
+//this func is fine dont touch
         function computerPicks() {
             let computerChoices = ["rock", "paper", "scissors"];
             let randomizeChoice = Math.floor(Math.random() * computerChoices.length) + 1 // randomize rock paper and scissors
@@ -31,18 +38,18 @@
  return randomizeChoice;
 }
 
+//dont worry about this yet havent gotten this far
 function versus() {
-  if (returnText === randomizeChoice) {
+  if (playerChoice === randomizeChoice) {
     prompt("It was a draw.");
-  } else if (input === "rock" && randomizeChoice === "scissors") {
+  } else if (playerChoice === "rock" && randomizeChoice === "scissors") {
     prompt("Rock beats scissors! You win!");
-  } else if (input === "rock" && randomizeChoice === "paper") {
+  } else if (playerChoice === "rock" && randomizeChoice === "paper") {
     prompt("Paper beats rock. You lose...")
+  } else {
+    alert("Please enter a valid move.");
   }
 }
-returnText();
-computerPicks();
-versus();
 
 </script>
 </body>
