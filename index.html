@@ -10,37 +10,90 @@
     <p>Can you best the computer 3 out of 5 rounds? Let's see!</p>
     
 <script>
-
+//blank scores
+let playerScore = 0;
+let computerScore = 0;
+let draws = 0;
 let choices = ["rock", "paper", "scissors"];
 
-let userInput = prompt("Do you choose rock, paper or scissors?").toLocaleLowerCase(); 
+//the versus check, kind of long winded...
+function declareWinner(userInput, computerInput) {
+  if (userInput === 'rock' && computerInput === 'paper') {
+    console.log('You lose! Paper beats rock.');
+    return comWinsRound;
+  } else if (userInput === 'rock' && computerInput === 'scissors') {
+    console.log('You win! Rock beats scissors.')
+    return playerWinsRound;
+  } else if (userInput === 'scissors' && computerInput === 'rock') {
+  console.log('You lose! Rock beats scissors.');
+  return comWinsRound;
+  } else if (userInput === 'scissors' && computerInput === 'paper') {
+    console.log('You win! Scissors beats paper.')
+    return playerWinsRound;
+  } else if (userInput === 'paper' && computerInput === 'scissors') {
+    console.log('You lose! Scissors beats paper.');
+    return comWinsRound;
+  } else if (userInput === 'paper' && computerInput === 'rock') {
+    console.log('You win! Paper beats rock.')
+    return playerWinsRound;
+  } else {
+    console.log('You tie!');
+    return draw;
+  }
+}
+
+//variables needed to keep score
+let playerWinsRound = "Player wins!"
+let comWinsRound = "Computer wins!"
+let draw = "It's a draw"
+let playerWinGame = "Player has won the game!"
+let comWinGame = "Computer has won the game!"
+
+
+//the loop for each round
+for (let i = 0; i < 100; i++) {
+//player input
+  let userInput = prompt("Do you choose rock, paper or scissors?").toLocaleLowerCase(); 
     if(userInput ==="paper" || userInput ==="rock" || userInput ==="scissors"){
         console.log("You chose " + `${userInput}`);
     } else {
         console.log("Error! Try again!");
     }
 
+//computer input    
 let computerInput = choices[Math.floor(Math.random()*3)];
 console.log("Computer chose" + ` ${computerInput}`);
-
-function declareWinner(userInput, computerInput) {
-  if (userInput === 'rock' && computerInput === 'paper') {
-    console.log('You lose! Paper beats rock.');
-  } else if (userInput === 'rock' && computerInput === 'scissors') {
-    console.log('You win! Rock beats scissors.')
-  } else if (userInput === 'scissors' && computerInput === 'rock') {
-  console.log('You lose! Rock beats scissors.');
-  } else if (userInput === 'scissors' && computerInput === 'paper') {
-    console.log('You win! Scissors beats paper.')
-  } else if (userInput === 'paper' && computerInput === 'scissors') {
-    console.log('You lose! Scissors beats paper.');
-  } else if (userInput === 'paper' && computerInput === 'rock') {
-    console.log('You win! Paper beats rock.')
-  } else {
-    console.log('You tie!');
+//the winner gets turned into the result of the round
+  let roundResult = declareWinner(userInput, computerInput)
+//run this function on the result
+  gameScore(roundResult);
+  console.log("Your score is " + playerScore);
+  console.log("The computer's score is " + computerScore);
+//once the function is stopped from below, check again here and end the game
+  if (playerScore === 5 || computerScore ===5){
+    break;
   }
 }
-declareWinner(userInput, computerInput);
+//keeps track of each score
+function gameScore(roundResult) {
+  if (roundResult === playerWinsRound){
+    playerScore++;
+  } else if (roundResult === draw) {
+    draws++;
+  } else {
+    computerScore++;
+  }
+//stop the functio once these two scores have either reached 5
+  if (playerScore === 5) {
+    console.log(playerWinGame);
+    return;
+  }
+  if (computerScore === 5) {
+    console.log(comWinGame);
+    return;
+  }
+}
+
 </script>
 </body>
 </html>
